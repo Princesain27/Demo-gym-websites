@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IRONFORGE | Premium Fitness</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#080808;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+:root{
+    --red:#ff2b2b;
+    --dark:#080808;
+    --card:#111;
+    --gray:#a7a7a7;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title span{
+    color:var(--red);
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+.section-title h2{
+    font-family:'Anton',sans-serif;
+    font-size:55px;
+    letter-spacing:1px;
+    margin-top:10px;
+}
+
+.section-title p{
+    color:var(--gray);
+    max-width:600px;
+    margin:15px auto;
+}
+
+/* =========================
+   LOADER
+========================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    background:#080808;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    transition:.6s;
+}
+
+.loader h1{
+    font-family:'Anton';
+    font-size:55px;
+    color:var(--red);
+    animation:pulse 1s infinite alternate;
+}
+
+@keyframes pulse{
+    from{opacity:.3; transform:scale(.9)}
+    to{opacity:1; transform:scale(1)}
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.navbar{
+    height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-family:'Anton';
+    font-size:28px;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:var(--red);
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+.nav-links a{
+    font-size:14px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--red);
+}
+
+.nav-btn{
+    background:var(--red);
+    padding:12px 20px;
+    border-radius:4px;
+    font-weight:700;
+    font-size:13px;
+    transition:.3s;
+}
+
+.nav-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(255,43,43,.3);
+}
+
+.menu{
+    display:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    background:
+    linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.5)),
+    url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=2000&q=90");
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:750px;
+    padding-top:70px;
+    animation:heroIn 1.2s ease;
+}
+
+@keyframes heroIn{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.hero small{
+    color:var(--red);
+    font-weight:700;
+    letter-spacing:4px;
+}
+
+.hero h1{
+    font-family:'Anton';
+    font-size:clamp(65px,9vw,130px);
+    line-height:.9;
+    margin:20px 0;
+}
+
+.hero h1 span{
+    color:transparent;
+    -webkit-text-stroke:2px white;
+}
+
+.hero p{
+    color:#ccc;
+    max-width:550px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    padding:15px 28px;
+    border-radius:4px;
+    font-weight:700;
+    font-size:14px;
+    transition:.3s;
+    display:inline-block;
+}
+
+.btn-primary{
+    background:var(--red);
+}
+
+.btn-outline{
+    border:1px solid #fff;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+}
+
+.btn-primary:hover{
+    box-shadow:0 15px 35px rgba(255,43,43,.3);
+}
+
+.scroll{
+    position:absolute;
+    bottom:30px;
+    left:5%;
+    color:#aaa;
+    font-size:12px;
+    letter-spacing:2px;
+    animation:scroll 1.5s infinite;
+}
+
+@keyframes scroll{
+    50%{transform:translateY(10px)}
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    background:var(--red);
+    padding:35px 0;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    text-align:center;
+}
+
+.stat h3{
+    font-family:'Anton';
+    font-size:45px;
+}
+
+.stat p{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.service{
+    position:relative;
+    min-height:300px;
+    overflow:hidden;
+    padding:35px;
+    border:1px solid #222;
+    background:#101010;
+    transition:.5s;
+}
+
+.service::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:4px;
+    left:0;
+    bottom:0;
+    background:var(--red);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:.5s;
+}
+
+.service:hover::before{
+    transform:scaleX(1);
+}
+
+.service:hover{
+    transform:translateY(-10px);
+    border-color:#333;
+}
+
+.service-icon{
+    width:55px;
+    height:55px;
+    background:rgba(255,43,43,.1);
+    color:var(--red);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    margin-bottom:30px;
+}
+
+.service h3{
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.service p{
+    color:#999;
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    background:#0d0d0d;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.about-img{
+    height:550px;
+    background:
+    linear-gradient(0deg,rgba(0,0,0,.3),rgba(0,0,0,.1)),
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=90");
+    background-size:cover;
+    background-position:center;
+}
+
+.about-content h2{
+    font-family:'Anton';
+    font-size:55px;
+    margin:15px 0 25px;
+}
+
+.about-content h2 span{
+    color:var(--red);
+}
+
+.about-content p{
+    color:#aaa;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin:30px 0;
+}
+
+.feature{
+    font-size:14px;
+}
+
+.feature span{
+    color:var(--red);
+    margin-right:8px;
+}
+
+/* =========================
+   PROGRAMS
+========================= */
+
+.programs-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.program{
+    height:420px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    background-size:cover;
+    background-position:center;
+}
+
+.program:nth-child(1){
+    background-image:url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80");
+}
+
+.program:nth-child(2){
+    background-image:url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80");
+}
+
+.program:nth-child(3){
+    background-image:url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=80");
+}
+
+.program::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent,rgba(0,0,0,.95));
+}
+
+.program-content{
+    position:relative;
+    z-index:2;
+    padding:30px;
+}
+
+.program-content span{
+    color:var(--red);
+    font-size:12px;
+    font-weight:bold;
+}
+
+.program-content h3{
+    font-family:'Anton';
+    font-size:32px;
+    margin:8px 0;
+}
+
+.program-content p{
+    color:#bbb;
+    font-size:13px;
+}
+
+/* =========================
+   PRICING
+========================= */
+
+.pricing{
+    background:#0d0d0d;
+}
+
+.pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.price-card{
+    background:#121212;
+    border:1px solid #222;
+    padding:40px 30px;
+    position:relative;
+    transition:.4s;
+}
+
+.price-card:hover{
+    transform:translateY(-10px);
+}
+
+.price-card.popular{
+    border:1px solid var(--red);
+}
+
+.popular-label{
+    position:absolute;
+    top:0;
+    right:0;
+    background:var(--red);
+    padding:7px 15px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.price-card h3{
+    font-size:22px;
+}
+
+.price{
+    font-family:'Anton';
+    font-size:55px;
+    margin:20px 0;
+}
+
+.price span{
+    font-family:'Poppins';
+    font-size:13px;
+    color:#777;
+}
+
+.price-card ul{
+    list-style:none;
+    margin:25px 0;
+}
+
+.price-card li{
+    padding:10px 0;
+    border-bottom:1px solid #222;
+    color:#aaa;
+    font-size:13px;
+}
+
+.price-card li::before{
+    content:"✓";
+    color:var(--red);
+    margin-right:10px;
+}
+
+/* =========================
+   TRAINERS
+========================= */
+
+.trainers-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.trainer{
+    position:relative;
+    overflow:hidden;
+}
+
+.trainer img{
+    width:100%;
+    height:430px;
+    object-fit:cover;
+    filter:grayscale(100%);
+    transition:.5s;
+}
+
+.trainer:hover img{
+    filter:grayscale(0);
+    transform:scale(1.05);
+}
+
+.trainer-info{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:25px;
+    background:linear-gradient(transparent,#000);
+}
+
+.trainer-info h3{
+    font-size:21px;
+}
+
+.trainer-info p{
+    color:var(--red);
+    font-size:12px;
+}
+
+/* =========================
+   BMI
+========================= */
+
+.bmi{
+    background:
+    linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.65)),
+    url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1800&q=90");
+    background-size:cover;
+    background-position:center;
+}
+
+.bmi-box{
+    max-width:650px;
+    margin:auto;
+    text-align:center;
+}
+
+.bmi-box h2{
+    font-family:'Anton';
+    font-size:55px;
+}
+
+.bmi-box p{
+    color:#aaa;
+    margin:15px 0 30px;
+}
+
+.bmi-inputs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.bmi-inputs input{
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    background:#fff;
+    color:#111;
+}
+
+.bmi-result{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:bold;
+    color:var(--red);
+}
+
+/* =========================
+   TESTIMONIAL
+========================= */
+
+.testimonial{
+    max-width:800px;
+    margin:auto;
+    text-align:center;
+}
+
+.quote{
+    font-size:65px;
+    color:var(--red);
+    line-height:1;
+}
+
+.testimonial p{
+    color:#bbb;
+    line-height:1.8;
+    font-size:17px;
+}
+
+.testimonial h4{
+    margin-top:25px;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    padding:80px 0;
+    background:var(--red);
+    text-align:center;
+}
+
+.cta h2{
+    font-family:'Anton';
+    font-size:60px;
+}
+
+.cta p{
+    margin:15px 0 30px;
+}
+
+.cta .btn{
+    background:#000;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:60px 0 20px;
+    background:#050505;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-logo{
+    font-family:'Anton';
+    font-size:30px;
+}
+
+.footer-logo span{
+    color:var(--red);
+}
+
+footer p{
+    color:#777;
+    font-size:13px;
+    line-height:1.8;
+    margin-top:15px;
+}
+
+footer h4{
+    margin-bottom:20px;
+}
+
+footer ul{
+    list-style:none;
+}
+
+footer li{
+    margin:10px 0;
+    color:#777;
+    font-size:13px;
+}
+
+footer li:hover{
+    color:var(--red);
+}
+
+.copyright{
+    border-top:1px solid #1a1a1a;
+    margin-top:40px;
+    padding-top:20px;
+    text-align:center;
+    color:#555;
+    font-size:12px;
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.whatsapp{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:55px;
+    height:55px;
+    background:#25D366;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    z-index:900;
+    box-shadow:0 5px 25px rgba(37,211,102,.4);
+    animation:float 2s infinite;
+}
+
+@keyframes float{
+    50%{transform:translateY(-8px)}
+}
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        position:absolute;
+        top:75px;
+        left:0;
+        width:100%;
+        background:#090909;
+        flex-direction:column;
+        text-align:center;
+        padding:30px;
+        display:none;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .nav-btn{
+        display:none;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+        gap:30px;
+    }
+
+    .services-grid,
+    .programs-grid,
+    .pricing-grid,
+    .trainers-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-img{
+        height:400px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:70px 0;
+    }
+
+    .hero h1{
+        font-size:65px;
+    }
+
+    .section-title h2{
+        font-size:42px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        width:200px;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat h3{
+        font-size:35px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .bmi-inputs{
+        grid-template-columns:1fr;
+    }
+
+    .cta h2{
+        font-size:42px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+    <h1>IRONFORGE</h1>
+</div>
+
+<!-- NAVBAR -->
+<header>
+    <div class="container navbar">
+
+        <a href="#" class="logo">
+            IRON<span>FORGE</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#pricing">Membership</a></li>
+            <li><a href="#trainers">Trainers</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <a href="#pricing" class="nav-btn">JOIN NOW</a>
+
+        <div class="menu" id="menu">☰</div>
+
+    </div>
+</header>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <small>NO EXCUSES. JUST RESULTS.</small>
+
+            <h1>
+                BUILD<br>
+                <span>YOUR</span><br>
+                LEGACY
+            </h1>
+
+            <p>
+                Push your limits. Build strength. Transform your body
+                and become the strongest version of yourself.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#pricing" class="btn btn-primary">
+                    START TRAINING
+                </a>
+
+                <a href="#programs" class="btn btn-outline">
+                    EXPLORE PROGRAMS
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="scroll">
+        ↓ SCROLL TO EXPLORE
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+<div class="stats">
+
+    <div class="container stats-grid">
+
+        <div class="stat">
+            <h3 class="counter" data-target="2500">0</h3>
+            <p>Members</p>
+        </div>
+
+        <div class="stat">
+            <h3 class="counter" data-target="15">0</h3>
+            <p>Expert Trainers</p>
+        </div>
+
+        <div class="stat">
+            <h3 class="counter" data-target="12">0</h3>
+            <p>Years Experience</p>
+        </div>
+
+        <div class="stat">
+            <h3 class="counter" data-target="98">0</h3>
+            <p>Success Rate %</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SERVICES -->
+<section id="services">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+            <span>WHAT WE OFFER</span>
+            <h2>TRAIN LIKE A BEAST</h2>
+            <p>
+                Everything you need to transform your body,
+                improve performance and build confidence.
+            </p>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service reveal">
+                <div class="service-icon">🏋</div>
+                <h3>Strength Training</h3>
+                <p>
+                    Build raw strength with professionally designed
+                    progressive training programs.
+                </p>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-icon">🔥</div>
+                <h3>Fat Loss</h3>
+                <p>
+                    Burn fat while preserving muscle with effective
+                    workouts and nutrition guidance.
+                </p>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-icon">⚡</div>
+                <h3>Performance</h3>
+                <p>
+                    Improve endurance, speed, mobility and athletic
+                    performance.
+                </p>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-icon">🥗</div>
+                <h3>Nutrition</h3>
+                <p>
+                    Get personalized nutrition strategies designed
+                    around your fitness goals.
+                </p>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-icon">💪</div>
+                <h3>Personal Training</h3>
+                <p>
+                    One-on-one coaching with experienced professional
+                    trainers.
+                </p>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-icon">🧘</div>
+                <h3>Recovery</h3>
+                <p>
+                    Mobility and recovery sessions to help you train
+                    harder and recover faster.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="about">
+
+    <div class="container about-grid">
+
+        <div class="about-img reveal"></div>
+
+        <div class="about-content reveal">
+
+            <span style="color:#ff2b2b;letter-spacing:3px;font-weight:bold;">
+                WHY IRONFORGE
+            </span>
+
+            <h2>
+                MORE THAN<br>
+                A <span>GYM.</span>
+            </h2>
+
+            <p>
+                We created IRONFORGE for people who refuse to settle.
+                Whether you're starting your fitness journey or chasing
+                elite performance, our team is here to push you further.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+                    <span>✓</span> Premium Equipment
+                </div>
+
+                <div class="feature">
+                    <span>✓</span> Certified Trainers
+                </div>
+
+                <div class="feature">
+                    <span>✓</span> Personalized Plans
+                </div>
+
+                <div class="feature">
+                    <span>✓</span> 24/7 Access
+                </div>
+
+            </div>
+
+            <a href="#contact" class="btn btn-primary">
+                LEARN MORE
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROGRAMS -->
+<section id="programs">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>TRAINING PROGRAMS</span>
+
+            <h2>CHOOSE YOUR BATTLE</h2>
+
+            <p>
+                Select a program that matches your goals.
+            </p>
+
+        </div>
+
+        <div class="programs-grid">
+
+            <div class="program reveal">
+
+                <div class="program-content">
+
+                    <span>PROGRAM 01</span>
+
+                    <h3>MUSCLE BUILDING</h3>
+
+                    <p>
+                        Build lean muscle and serious strength.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="program reveal">
+
+                <div class="program-content">
+
+                    <span>PROGRAM 02</span>
+
+                    <h3>FAT BURN</h3>
+
+                    <p>
+                        Get leaner, stronger and faster.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="program reveal">
+
+                <div class="program-content">
+
+                    <span>PROGRAM 03</span>
+
+                    <h3>ATHLETIC</h3>
+
+                    <p>
+                        Take your performance to the next level.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>MEMBERSHIP</span>
+
+            <h2>CHOOSE YOUR PLAN</h2>
+
+            <p>
+                No hidden fees. No complicated contracts.
+            </p>
+
+        </div>
+
+        <div class="pricing-grid">
+
+            <div class="price-card reveal">
+
+                <h3>STARTER</h3>
+
+                <div class="price">
+                    ₹999 <span>/month</span>
+                </div>
+
+                <ul>
+                    <li>Gym Access</li>
+                    <li>Basic Equipment</li>
+                    <li>Locker Access</li>
+                    <li>Fitness Assessment</li>
+                </ul>
+
+                <a href="#contact" class="btn btn-outline">
+                    GET STARTED
+                </a>
+
+            </div>
+
+
+            <div class="price-card popular reveal">
+
+                <div class="popular-label">
+                    MOST POPULAR
+                </div>
+
+                <h3>PRO</h3>
+
+                <div class="price">
+                    ₹1,999 <span>/month</span>
+                </div>
+
+                <ul>
+                    <li>Everything in Starter</li>
+                    <li>Personal Training</li>
+                    <li>Nutrition Guidance</li>
+                    <li>Custom Workout Plan</li>
+                </ul>
+
+                <a href="#contact" class="btn btn-primary">
+                    JOIN PRO
+                </a>
+
+            </div>
+
+
+            <div class="price-card reveal">
+
+                <h3>ELITE</h3>
+
+                <div class="price">
+                    ₹3,499 <span>/month</span>
+                </div>
+
+                <ul>
+                    <li>Everything in Pro</li>
+                    <li>Unlimited Training</li>
+                    <li>Advanced Nutrition</li>
+                    <li>Priority Coaching</li>
+                </ul>
+
+                <a href="#contact" class="btn btn-outline">
+                    GO ELITE
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TRAINERS -->
+<section id="trainers">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>OUR TEAM</span>
+
+            <h2>MEET THE COACHES</h2>
+
+            <p>
+                Learn from trainers who know what it takes.
+            </p>
+
+        </div>
+
+        <div class="trainers-grid">
+
+            <div class="trainer reveal">
+
+                <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=80">
+
+                <div class="trainer-info">
+                    <h3>Alex Carter</h3>
+                    <p>STRENGTH COACH</p>
+                </div>
+
+            </div>
+
+            <div class="trainer reveal">
+
+                <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=800&q=80">
+
+                <div class="trainer-info">
+                    <h3>Sarah Williams</h3>
+                    <p>FITNESS COACH</p>
+                </div>
+
+            </div>
+
+            <div class="trainer reveal">
+
+                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80">
+
+                <div class="trainer-info">
+                    <h3>Mike Johnson</h3>
+                    <p>PERFORMANCE COACH</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BMI -->
+<section class="bmi">
+
+    <div class="container">
+
+        <div class="bmi-box reveal">
+
+            <span style="color:#ff2b2b;letter-spacing:3px;font-weight:bold;">
+                FITNESS TOOL
+            </span>
+
+            <h2>BMI CALCULATOR</h2>
+
+            <p>
+                Enter your details and get a quick BMI estimate.
+            </p>
+
+            <div class="bmi-inputs">
+
+                <input
+                    type="number"
+                    id="weight"
+                    placeholder="Weight (kg)"
+                >
+
+                <input
+                    type="number"
+                    id="height"
+                    placeholder="Height (cm)"
+                >
+
+            </div>
+
+            <br>
+
+            <button class="btn btn-primary" onclick="calculateBMI()">
+                CALCULATE BMI
+            </button>
+
+            <div class="bmi-result" id="bmiResult"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TESTIMONIAL -->
+<section>
+
+    <div class="container">
+
+        <div class="testimonial reveal">
+
+            <div class="quote">“</div>
+
+            <p>
+                IRONFORGE completely changed the way I approach fitness.
+                The trainers actually care about your progress and the
+                atmosphere keeps me motivated every single day.
+            </p>
+
+            <h4>— Rahul Sharma</h4>
+
+            <small style="color:#777;">
+                IRONFORGE MEMBER
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="cta" id="contact">
+
+    <div class="container">
+
+        <h2>READY TO GET STRONGER?</h2>
+
+        <p>
+            Your transformation starts with one decision.
+        </p>
+
+        <a
+            href="https://wa.me/919999999999?text=Hello%20IRONFORGE,%20I%20want%20to%20join%20the%20gym."
+            target="_blank"
+            class="btn"
+        >
+            TALK TO US ON WHATSAPP
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <div class="footer-logo">
+                    IRON<span>FORGE</span>
+                </div>
+
+                <p>
+                    Premium fitness. Professional coaching.
+                    Real results.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4>QUICK LINKS</h4>
+
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#pricing">Membership</a></li>
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h4>PROGRAMS</h4>
+
+                <ul>
+                    <li>Muscle Building</li>
+                    <li>Fat Loss</li>
+                    <li>Strength</li>
+                    <li>Performance</li>
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h4>CONTACT</h4>
+
+                <ul>
+                    <li>📍 New Delhi, India</li>
+                    <li>📞 +91 99999 99999</li>
+                    <li>✉ hello@ironforge.com</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 IRONFORGE FITNESS. ALL RIGHTS RESERVED.
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- WHATSAPP -->
+<a
+    href="https://wa.me/919999999999?text=Hello%20IRONFORGE,%20I%20want%20to%20know%20more%20about%20membership."
+    target="_blank"
+    class="whatsapp"
+>
+    ☎
+</a>
+
+
+<script>
+
+/* =========================
+   LOADER
+========================= */
+
+window.addEventListener("load",function(){
+
+    setTimeout(function(){
+
+        document.getElementById("loader").style.opacity="0";
+
+        setTimeout(function(){
+            document.getElementById("loader").style.display="none";
+        },600);
+
+    },1000);
+
+});
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menu = document.getElementById("menu");
+const navLinks = document.getElementById("navLinks");
+
+menu.addEventListener("click",function(){
+
+    navLinks.classList.toggle("active");
+
+});
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+
+    link.addEventListener("click",function(){
+
+        navLinks.classList.remove("active");
+
+    });
+
+});
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+
+    reveals.forEach(element=>{
+
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+
+        if(elementTop < windowHeight - 100){
+
+            element.classList.add("active");
+
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll",revealOnScroll);
+
+revealOnScroll();
+
+
+/* =========================
+   COUNTER
+========================= */
+
+const counters = document.querySelectorAll(".counter");
+
+let counterStarted = false;
+
+function startCounters(){
+
+    const stats = document.querySelector(".stats");
+    const top = stats.getBoundingClientRect().top;
+
+    if(top < window.innerHeight && !counterStarted){
+
+        counterStarted = true;
+
+        counters.forEach(counter=>{
+
+            const target = +counter.getAttribute("data-target");
+
+            let count = 0;
+
+            const increment = target / 100;
+
+            function update(){
+
+                count += increment;
+
+                if(count < target){
+
+                    counter.innerText = Math.ceil(count);
+
+                    setTimeout(update,20);
+
+                }else{
+
+                    counter.innerText = target + "+";
+
+                }
+
+            }
+
+            update();
+
+        });
+
+    }
+
+}
+
+window.addEventListener("scroll",startCounters);
+
+
+/* =========================
+   BMI CALCULATOR
+========================= */
+
+function calculateBMI(){
+
+    const weight = parseFloat(
+        document.getElementById("weight").value
+    );
+
+    const height = parseFloat(
+        document.getElementById("height").value
+    );
+
+    const result = document.getElementById("bmiResult");
+
+    if(!weight || !height || weight<=0 || height<=0){
+
+        result.innerText = "Please enter valid values.";
+
+        return;
+
+    }
+
+    const heightMeter = height / 100;
+
+    const bmi = weight / (heightMeter * heightMeter);
+
+    let category = "";
+
+    if(bmi < 18.5){
+
+        category = "Underweight";
+
+    }else if(bmi < 25){
+
+        category = "Normal Weight";
+
+    }else if(bmi < 30){
+
+        category = "Overweight";
+
+    }else{
+
+        category = "Obese";
+
+    }
+
+    result.innerHTML =
+        `Your BMI: <strong>${bmi.toFixed(1)}</strong> — ${category}`;
+
+}
+
+</script>
+
+</body>
+</html>
